@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adaaf - The Operating System for One-Person Empires</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f1e8 0%, #e8dcc8 100%);
+            color: #4a4a4a;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            padding: 30px 0;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 600;
+            color: #2c2c2c;
+            letter-spacing: 1px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: calc(100vh - 100px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        h1 {
+            font-size: 64px;
+            line-height: 1.2;
+            color: #2c2c2c;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .tagline {
+            font-size: 28px;
+            color: #1a8b7e;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .subtitle {
+            font-size: 20px;
+            color: #6a6a6a;
+            margin-bottom: 50px;
+            line-height: 1.6;
+        }
+
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            background: #1a8b7e;
+            color: white;
+            padding: 20px 60px;
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(26, 139, 126, 0.3);
+        }
+
+        .cta-button:hover {
+            background: #157067;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(26, 139, 126, 0.4);
+        }
+
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-top: 80px;
+            padding: 60px 0;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: #1a8b7e;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            color: #6a6a6a;
+        }
+
+        /* Features Grid */
+        .features {
+            padding: 80px 0;
+            background: rgba(255, 255, 255, 0.5);
+            margin-top: 60px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .feature-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2c2c2c;
+            margin-bottom: 15px;
+        }
+
+        .feature-desc {
+            font-size: 16px;
+            color: #6a6a6a;
+            line-height: 1.6;
+        }
+
+        /* Footer CTA */
+        .footer-cta {
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .footer-cta h2 {
+            font-size: 42px;
+            color: #2c2c2c;
+            margin-bottom: 30px;
+        }
+
+        .footer-cta p {
+            font-size: 20px;
+            color: #6a6a6a;
+            margin-bottom: 40px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 42px;
+            }
+
+            .tagline {
+                font-size: 22px;
+            }
+
+            .subtitle {
+                font-size: 18px;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+
+            .stat-number {
+                font-size: 36px;
+            }
+        }
+
+        /* Decorative Elements */
+        .decorative-circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .circle-1 {
+            width: 400px;
+            height: 400px;
+            background: #1a8b7e;
+            top: -200px;
+            right: -100px;
+        }
+
+        .circle-2 {
+            width: 300px;
+            height: 300px;
+            background: #d4af37;
+            bottom: 100px;
+            left: -150px;
+        }
+    </style>
+</head>
+<body>
+    <div class="decorative-circle circle-1"></div>
+    <div class="decorative-circle circle-2"></div>
+
+    <header>
+        <div class="container">
+            <div class="logo">Adaaf</div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>The Operating System for One-Person Empires</h1>
+                <p class="tagline">Build a $5M business without hiring a single employee</p>
+                <p class="subtitle">Coordinated AI agents that understand your business model, execute your strategy, and scale your impact—without scaling your complexity.</p>
+                <a href="#signup" class="cta-button">Join the Waitlist</a>
+                
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-number">28.5M</div>
+                        <div class="stat-label">Solo Founders</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">8x</div>
+                        <div class="stat-label">Revenue Growth</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">30hrs</div>
+                        <div class="stat-label">Per Week</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">Zero</div>
+                        <div class="stat-label">Employees</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 20px;">
+                <h2 style="font-size: 42px; color: #2c2c2c; margin-bottom: 20px;">One Brain, Many Hands</h2>
+                <p style="font-size: 20px; color: #6a6a6a;">Your agents work together as a unified system</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <div class="feature-title">Marketing</div>
+                    <div class="feature-desc">Campaign creation and optimization</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚙️</div>
+                    <div class="feature-title">Product</div>
+                    <div class="feature-desc">Development and iteration</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <div class="feature-title">Customer Success</div>
+                    <div class="feature-desc">Support and retention</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <div class="feature-title">Operations</div>
+                    <div class="feature-desc">Process automation</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <div class="feature-title">Finance</div>
+                    <div class="feature-desc">Tracking and planning</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <div class="feature-title">Analytics</div>
+                    <div class="feature-desc">Insights and reporting</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="footer-cta">
+        <div class="container">
+            <h2>Intelligence that scales,<br>so you don't have to.</h2>
+            <p>Join the founding 100 members building the future of solo entrepreneurship</p>
+            <a href="#signup" class="cta-button">Get Early Access</a>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                } else {
+                    // If target doesn't exist, trigger signup modal or redirect
+                    alert('Sign up coming soon! Email: pravin@paratey.com');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
