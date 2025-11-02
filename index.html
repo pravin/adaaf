@@ -12,9 +12,9 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f5f1e8 0%, #e8dcc8 100%);
-            color: #4a4a4a;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            color: #ffffff;
             overflow-x: hidden;
         }
 
@@ -24,21 +24,71 @@
             padding: 0 20px;
         }
 
+        /* Animated background */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(56, 189, 248, 0.3);
+            border-radius: 50%;
+            animation: float 20s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+
         /* Header */
         header {
+            position: relative;
+            z-index: 10;
             padding: 30px 0;
         }
 
         .logo {
             font-size: 32px;
-            font-weight: 600;
-            color: #2c2c2c;
-            letter-spacing: 1px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #38bdf8 0%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+        }
+
+        /* Sections */
+        section {
+            position: relative;
+            z-index: 10;
+            padding: 80px 0;
+        }
+
+        .section-small {
+            padding: 40px 0;
         }
 
         /* Hero Section */
         .hero {
-            min-height: calc(100vh - 100px);
+            min-height: 90vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -47,301 +97,780 @@
         }
 
         .hero-content {
-            max-width: 800px;
+            max-width: 900px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #38bdf8;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease-out 0.2s backwards;
         }
 
         h1 {
-            font-size: 64px;
-            line-height: 1.2;
-            color: #2c2c2c;
-            margin-bottom: 30px;
-            font-weight: 700;
+            font-size: clamp(36px, 6vw, 72px);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            animation: fadeInUp 1s ease-out 0.4s backwards;
+            letter-spacing: -2px;
         }
 
-        .tagline {
-            font-size: 28px;
-            color: #1a8b7e;
-            margin-bottom: 20px;
-            font-weight: 500;
+        h2 {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 700;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        h3 {
+            font-size: clamp(20px, 3vw, 28px);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #38bdf8 0%, #06b6d4 50%, #0ea5e9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .subtitle {
-            font-size: 20px;
-            color: #6a6a6a;
+            font-size: clamp(18px, 2.5vw, 24px);
+            color: #94a3b8;
+            margin-bottom: 40px;
+            line-height: 1.6;
+            animation: fadeInUp 1s ease-out 0.6s backwards;
+            font-weight: 400;
+        }
+
+        .description {
+            font-size: 18px;
+            color: #94a3b8;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        /* Feature Pills */
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
             margin-bottom: 50px;
+            animation: fadeInUp 1s ease-out 0.8s backwards;
+        }
+
+        .feature-pill {
+            padding: 12px 24px;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 25px;
+            font-size: 15px;
+            color: #cbd5e1;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .feature-pill:hover {
+            background: rgba(56, 189, 248, 0.1);
+            border-color: rgba(56, 189, 248, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* Problem Section */
+        .problem-section {
+            background: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(56, 189, 248, 0.1);
+            border-radius: 24px;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .problem-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .problem-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+
+        .problem-card:hover {
+            border-color: rgba(239, 68, 68, 0.4);
+            transform: translateY(-4px);
+        }
+
+        .problem-icon {
+            font-size: 36px;
+            margin-bottom: 16px;
+        }
+
+        .problem-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #ef4444;
+        }
+
+        .problem-text {
+            font-size: 15px;
+            color: #94a3b8;
             line-height: 1.6;
         }
 
-        /* CTA Button */
-        .cta-button {
-            display: inline-block;
-            background: #1a8b7e;
-            color: white;
-            padding: 20px 60px;
-            font-size: 18px;
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(26, 139, 126, 0.3);
+        /* How It Works Section */
+        .how-it-works {
+            text-align: center;
         }
 
-        .cta-button:hover {
-            background: #157067;
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(26, 139, 126, 0.4);
+        .how-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .how-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 20px;
+            padding: 40px 30px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .how-card:hover {
+            background: rgba(56, 189, 248, 0.05);
+            border-color: rgba(56, 189, 248, 0.4);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(56, 189, 248, 0.2);
+        }
+
+        .how-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #38bdf8 0%, #06b6d4 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin: 0 auto 24px;
+            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.3);
+        }
+
+        .how-title {
+            color: #38bdf8;
+            margin-bottom: 16px;
+        }
+
+        .how-text {
+            font-size: 16px;
+            color: #cbd5e1;
+            line-height: 1.7;
+        }
+
+        /* Transformation Section */
+        .transformation {
+            text-align: center;
+        }
+
+        .comparison {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .comparison-card {
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 20px;
+            padding: 40px 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .before-card {
+            border: 2px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .after-card {
+            border: 2px solid rgba(34, 197, 94, 0.3);
+            background: rgba(56, 189, 248, 0.05);
+        }
+
+        .comparison-label {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 24px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .before-label {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .after-label {
+            background: rgba(34, 197, 94, 0.1);
+            color: #22c55e;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .metric {
+            margin: 20px 0;
+        }
+
+        .metric-value {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .before-value {
+            color: #ef4444;
+        }
+
+        .after-value {
+            background: linear-gradient(135deg, #38bdf8 0%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .metric-label {
+            font-size: 14px;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .transformation-note {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 12px;
+            font-size: 16px;
+            color: #38bdf8;
+            font-weight: 500;
         }
 
         /* Stats Section */
         .stats {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 40px;
-            margin-top: 80px;
+            margin-top: 60px;
             padding: 60px 0;
-            max-width: 1000px;
-            margin-left: auto;
-            margin-right: auto;
+            border-top: 1px solid rgba(56, 189, 248, 0.1);
+            border-bottom: 1px solid rgba(56, 189, 248, 0.1);
         }
 
-        .stat-item {
+        .stat {
             text-align: center;
         }
 
         .stat-number {
-            font-size: 48px;
+            font-size: 42px;
             font-weight: 700;
-            color: #1a8b7e;
-            margin-bottom: 10px;
+            background: linear-gradient(135deg, #38bdf8 0%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
         }
 
         .stat-label {
-            font-size: 16px;
-            color: #6a6a6a;
+            font-size: 15px;
+            color: #94a3b8;
+            font-weight: 500;
         }
 
-        /* Features Grid */
-        .features {
+        /* Waitlist Form */
+        .waitlist-section {
+            animation: fadeInUp 1s ease-out 1s backwards;
+            text-align: center;
             padding: 80px 0;
-            background: rgba(255, 255, 255, 0.5);
-            margin-top: 60px;
         }
 
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            margin-top: 60px;
-            max-width: 1000px;
-            margin-left: auto;
-            margin-right: auto;
+        .waitlist-box {
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(15, 23, 42, 0.6);
+            border: 2px solid rgba(56, 189, 248, 0.3);
+            border-radius: 24px;
+            padding: 60px 40px;
+            backdrop-filter: blur(10px);
         }
 
-        .feature-card {
-            background: white;
-            padding: 40px 30px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
+        .waitlist-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            margin-top: 30px;
         }
 
-        .feature-card:hover {
-            transform: translateY(-5px);
+        .input-group {
+            display: flex;
+            gap: 12px;
+            width: 100%;
+            max-width: 500px;
         }
 
-        .feature-icon {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-
-        .feature-title {
-            font-size: 20px;
-            font-weight: 600;
-            color: #2c2c2c;
-            margin-bottom: 15px;
-        }
-
-        .feature-desc {
+        input[type="email"] {
+            flex: 1;
+            padding: 18px 24px;
+            background: rgba(15, 23, 42, 0.8);
+            border: 2px solid rgba(56, 189, 248, 0.3);
+            border-radius: 12px;
+            color: #ffffff;
             font-size: 16px;
-            color: #6a6a6a;
-            line-height: 1.6;
+            outline: none;
+            transition: all 0.3s ease;
         }
 
-        /* Footer CTA */
-        .footer-cta {
+        input[type="email"]::placeholder {
+            color: #64748b;
+        }
+
+        input[type="email"]:focus {
+            border-color: #38bdf8;
+            box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.1);
+        }
+
+        .btn-primary {
+            padding: 18px 40px;
+            background: linear-gradient(135deg, #38bdf8 0%, #06b6d4 100%);
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.3);
+            white-space: nowrap;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(56, 189, 248, 0.4);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .early-access-benefits {
+            margin-top: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .benefit {
+            font-size: 14px;
+            color: #94a3b8;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .benefit-icon {
+            color: #38bdf8;
+            font-size: 18px;
+        }
+
+        /* Footer */
+        footer {
+            position: relative;
+            z-index: 10;
             text-align: center;
-            padding: 100px 0;
+            padding: 40px 0;
         }
 
-        .footer-cta h2 {
-            font-size: 42px;
-            color: #2c2c2c;
-            margin-bottom: 30px;
+        .footer-text {
+            font-size: 14px;
+            color: #64748b;
         }
 
-        .footer-cta p {
-            font-size: 20px;
-            color: #6a6a6a;
-            margin-bottom: 40px;
+        .footer-link {
+            color: #38bdf8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: #06b6d4;
+        }
+
+        /* Success message */
+        .success-message {
+            display: none;
+            padding: 20px 30px;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 12px;
+            color: #22c55e;
+            margin-top: 20px;
+            animation: fadeInUp 0.5s ease-out;
+            font-size: 16px;
+        }
+
+        .success-message.show {
+            display: block;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            h1 {
-                font-size: 42px;
+            section {
+                padding: 50px 0;
             }
 
-            .tagline {
-                font-size: 22px;
+            .problem-section,
+            .waitlist-box {
+                padding: 40px 24px;
             }
 
-            .subtitle {
-                font-size: 18px;
+            .input-group {
+                flex-direction: column;
+            }
+
+            .btn-primary {
+                width: 100%;
+            }
+
+            .features {
+                gap: 12px;
+            }
+
+            .feature-pill {
+                font-size: 14px;
+                padding: 10px 20px;
             }
 
             .stats {
-                grid-template-columns: repeat(2, 1fr);
                 gap: 30px;
+                padding: 40px 0;
             }
 
-            .stat-number {
-                font-size: 36px;
-            }
-
-            .features-grid {
+            .how-cards,
+            .problem-cards,
+            .comparison {
                 grid-template-columns: 1fr;
             }
-        }
-
-        /* Decorative Elements */
-        .decorative-circle {
-            position: absolute;
-            border-radius: 50%;
-            opacity: 0.1;
-            z-index: -1;
-        }
-
-        .circle-1 {
-            width: 400px;
-            height: 400px;
-            background: #1a8b7e;
-            top: -200px;
-            right: -100px;
-        }
-
-        .circle-2 {
-            width: 300px;
-            height: 300px;
-            background: #d4af37;
-            bottom: 100px;
-            left: -150px;
         }
     </style>
 </head>
 <body>
-    <div class="decorative-circle circle-1"></div>
-    <div class="decorative-circle circle-2"></div>
+    <!-- Animated background particles -->
+    <div class="particles" id="particles"></div>
 
-    <header>
-        <div class="container">
+    <div class="container">
+        <!-- Header -->
+        <header>
             <div class="logo">Adaaf</div>
-        </div>
-    </header>
+        </header>
 
-    <section class="hero">
-        <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
             <div class="hero-content">
-                <h1>The Operating System for One-Person Empires</h1>
-                <p class="tagline">Build a $5M business without hiring a single employee</p>
-                <p class="subtitle">Coordinated AI agents that understand your business model, execute your strategy, and scale your impact—without scaling your complexity.</p>
-                <a href="https://app.youform.com/forms/zpkwdo3i" class="cta-button">Join the Waitlist</a>
+                <div class="badge">✨ Launching in Q1 2025</div>
                 
-                <div class="stats">
-                    <div class="stat-item">
-                        <div class="stat-number">28.5M</div>
-                        <div class="stat-label">Solo Founders</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">8x</div>
-                        <div class="stat-label">Revenue Growth</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">30hrs</div>
-                        <div class="stat-label">Per Week</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">Zero</div>
-                        <div class="stat-label">Employees</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                <h1>
+                    The Operating System for<br>
+                    <span class="gradient-text">One-Person Empires</span>
+                </h1>
 
-    <section class="features">
-        <div class="container">
-            <div style="text-align: center; margin-bottom: 20px;">
-                <h2 style="font-size: 42px; color: #2c2c2c; margin-bottom: 20px;">One Brain, Many Hands</h2>
-                <p style="font-size: 20px; color: #6a6a6a;">Your agents work together as a unified system</p>
-            </div>
-            
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <div class="feature-title">Marketing</div>
-                    <div class="feature-desc">Campaign creation and optimization</div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⚙️</div>
-                    <div class="feature-title">Product</div>
-                    <div class="feature-desc">Development and iteration</div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">👥</div>
-                    <div class="feature-title">Customer Success</div>
-                    <div class="feature-desc">Support and retention</div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔄</div>
-                    <div class="feature-title">Operations</div>
-                    <div class="feature-desc">Process automation</div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">💰</div>
-                    <div class="feature-title">Finance</div>
-                    <div class="feature-desc">Tracking and planning</div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📈</div>
-                    <div class="feature-title">Analytics</div>
-                    <div class="feature-desc">Insights and reporting</div>
-                </div>
-            </div>
-        </div>
-    </section>
+                <p class="subtitle">
+                    Build a $5M business without hiring a single employee.<br>
+                    Coordinated AI agents that understand your business, execute your strategy,<br>
+                    and scale your impact—without scaling your complexity.
+                </p>
 
-    <section class="footer-cta">
-        <div class="container">
-            <h2>Intelligence that scales,<br>so you don't have to.</h2>
-            <p>Join the founding 100 members building the future of solo entrepreneurship</p>
-            <a href="https://app.youform.com/forms/zpkwdo3i" class="cta-button">Get Early Access</a>
-        </div>
-    </section>
+                <div class="features">
+                    <div class="feature-pill">🤖 6 Coordinated Agents</div>
+                    <div class="feature-pill">📈 10x Productivity</div>
+                    <div class="feature-pill">⚡ Zero Employees</div>
+                    <div class="feature-pill">🎯 Built for Solo Founders</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Problem Section -->
+        <section class="section-small">
+            <div class="problem-section">
+                <h2>Every Founder Faces the Same <span class="gradient-text">Impossible Choice</span></h2>
+                <p class="description">Both paths sacrifice what matters most: the freedom to build and create.</p>
+                
+                <div class="problem-cards">
+                    <div class="problem-card">
+                        <div class="problem-icon">👔</div>
+                        <div class="problem-title">Path A: Build a Team</div>
+                        <div class="problem-text">
+                            Become a people manager instead of a builder. Trade craft for endless coordination meetings. Watch margins compress as headcount grows.
+                        </div>
+                    </div>
+
+                    <div class="problem-card">
+                        <div class="problem-icon">😰</div>
+                        <div class="problem-title">Path B: Stay Solo</div>
+                        <div class="problem-text">
+                            Grind through 60-80 hour workweeks. Hit a hard revenue ceiling at $200K-500K. Burn out on administrative quicksand daily.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section class="how-it-works">
+            <h2>How <span class="gradient-text">Adaaf</span> Works</h2>
+            <p class="description">
+                Think of Adaaf as an employee shadowing you—learning your business, understanding your goals,<br>
+                and coordinating work across your entire operation.
+            </p>
+
+            <div class="how-cards">
+                <div class="how-card">
+                    <div class="how-icon">🧠</div>
+                    <h3 class="how-title">Business Intelligence</h3>
+                    <p class="how-text">
+                        Learns your specific business model, customer patterns, and goals by observing your daily operations. Like an employee in their first week—but learning 100x faster.
+                    </p>
+                </div>
+
+                <div class="how-card">
+                    <div class="how-icon">🔗</div>
+                    <h3 class="how-title">Unified Coordination</h3>
+                    <p class="how-text">
+                        Agents don't work in silos. Your marketing agent informs your product agent. Your customer success agent feeds insights to analytics. One brain, many hands.
+                    </p>
+                </div>
+
+                <div class="how-card">
+                    <div class="how-icon">📊</div>
+                    <h3 class="how-title">Continuous Learning</h3>
+                    <p class="how-text">
+                        Over time, it learns from what worked and what didn't, building compound intelligence specific to your business. It gets smarter every single day.
+                    </p>
+                </div>
+            </div>
+
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">6 Agents</div>
+                    <div class="stat-label">Marketing · Product · Customer Success<br>Operations · Finance · Analytics</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Always Working<br>Never Sleeping</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">$500</div>
+                    <div class="stat-label">Monthly Pricing<br>vs $10K+ for VA Services</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Transformation Section -->
+        <section class="transformation">
+            <h2>What Becomes <span class="gradient-text">Possible</span></h2>
+            <p class="description">
+                The transformation isn't just incremental—it's exponential.<br>
+                Work less, earn more, maintain complete control.
+            </p>
+
+            <div class="comparison">
+                <div class="comparison-card before-card">
+                    <div class="comparison-label before-label">Today: Solo Founder</div>
+                    
+                    <div class="metric">
+                        <div class="metric-value before-value">$300K</div>
+                        <div class="metric-label">Annual Revenue</div>
+                    </div>
+
+                    <div class="metric">
+                        <div class="metric-value before-value">65 hrs</div>
+                        <div class="metric-label">Per Week</div>
+                    </div>
+
+                    <div class="metric">
+                        <div class="metric-value before-value">80%</div>
+                        <div class="metric-label">Time on Operations</div>
+                    </div>
+
+                    <div class="metric">
+                        <div class="metric-value before-value">25%</div>
+                        <div class="metric-label">Profit Margin</div>
+                    </div>
+                </div>
+
+                <div class="comparison-card after-card">
+                    <div class="comparison-label after-label">In 18 Months: With Adaaf</div>
+                    
+                    <div class="metric">
+                        <div class="metric-value after-value">$2.5M</div>
+                        <div class="metric-label">Annual Revenue</div>
+                    </div>
+
+                    <div class="metric">
+                        <div class="metric-value after-value">30 hrs</div>
+                        <div class="metric-label">Per Week</div>
+                    </div>
+
+                    <div class="metric">
+                        <div class="metric-value after-value">20%</div>
+                        <div class="metric-label">Time on Operations</div>
+                    </div>
+
+                    <div class="metric">
+                        <div class="metric-value after-value">55%</div>
+                        <div class="metric-label">Profit Margin</div>
+                    </div>
+
+                    <div class="transformation-note">
+                        ✨ With zero employees
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Waitlist Section -->
+        <section class="waitlist-section">
+            <div class="waitlist-box">
+                <h2>Join the <span class="gradient-text">Founding 100</span></h2>
+                <p class="description">
+                    We're hand-picking 100 founding members who will shape the future of Adaaf.<br>
+                    Get lifetime benefits and priority access.
+                </p>
+
+                <form class="waitlist-form" id="waitlistForm">
+                    <div class="input-group">
+                        <input 
+                            type="email" 
+                            id="email" 
+                            placeholder="Enter your email" 
+                            required
+                        >
+                        <button type="submit" class="btn-primary">
+                            Join the Waitlist
+                        </button>
+                    </div>
+                </form>
+
+                <div class="early-access-benefits">
+                    <div class="benefit">
+                        <span class="benefit-icon">🎁</span>
+                        <span>Lifetime Founder Pricing</span>
+                    </div>
+                    <div class="benefit">
+                        <span class="benefit-icon">🚀</span>
+                        <span>Priority Support</span>
+                    </div>
+                    <div class="benefit">
+                        <span class="benefit-icon">💡</span>
+                        <span>Shape the Product</span>
+                    </div>
+                </div>
+
+                <div class="success-message" id="successMessage">
+                    ✓ Welcome to the future! Check your email for next steps.
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p class="footer-text">
+                Built with 💙 by solo founders, for solo founders · Based in Dubai 🇦🇪 · 
+                <a href="mailto:pravin@paratey.com" class="footer-link">Contact</a> · 
+                <a href="https://linkedin.com/in/pravinp" class="footer-link" target="_blank">LinkedIn</a>
+            </p>
+        </footer>
+    </div>
 
     <script>
-        // Smooth scroll for anchor links
+        // Create floating particles
+        const particlesContainer = document.getElementById('particles');
+        const particleCount = 50;
+
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 20 + 's';
+            particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+            particlesContainer.appendChild(particle);
+        }
+
+        // Handle form submission
+        document.getElementById('waitlistForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            
+            // Here you would typically send to your backend/email service
+            // For example: fetch('/api/waitlist', { method: 'POST', body: JSON.stringify({ email }) })
+            console.log('Email submitted:', email);
+            
+            // Show success message
+            document.getElementById('successMessage').classList.add('show');
+            
+            // Clear form
+            document.getElementById('email').value = '';
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                document.getElementById('successMessage').classList.remove('show');
+            }, 5000);
+        });
+
+        // Smooth scroll for anchor links (if you add any)
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
                     target.scrollIntoView({
-                        behavior: 'smooth'
+                        behavior: 'smooth',
+                        block: 'start'
                     });
-                } else {
-                    // If target doesn't exist, trigger signup modal or redirect
-                    alert('Sign up coming soon! Email: pravin@paratey.com');
                 }
             });
         });
